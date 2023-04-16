@@ -39,6 +39,7 @@ const Card = React.forwardRef(function (props, ref) {
     meta,
     onClick,
     raised,
+    boxShadowSize, //new
   } = props
 
   const classes = cx(
@@ -51,6 +52,8 @@ const Card = React.forwardRef(function (props, ref) {
     'card',
     className,
   )
+
+  const boxShadowStyle = boxShadowSize ? `0 0 ${shadowSize} 0 rgba(34, 36, 38, 0.15)` : '';
   const rest = getUnhandledProps(Card, props)
   const ElementType = getElementType(Card, props, () => {
     if (onClick) {
@@ -110,6 +113,9 @@ Card.propTypes = {
 
   /** A Card can be formatted to display different colors. */
   color: PropTypes.oneOf(SUI.COLORS),
+
+  /**Card's box shadow  can be adjusted */
+  boxShadowSize: PropTypes.string,
 
   /** Shorthand for primary content. */
   content: customPropTypes.contentShorthand,
